@@ -159,6 +159,7 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
         {
             this.Cliente = cliente.IsValid() ? cliente : default;
         }
+
         internal void RemoverCliente()
         {
             this.Cliente = null;

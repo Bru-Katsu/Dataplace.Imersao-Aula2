@@ -6,6 +6,7 @@ using Dapper;
 using Dataplace.Imersao.Core.Domain.Orcamentos.Enums;
 using Dataplace.Imersao.Core.Domain.Orcamentos.ValueObjects;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Dataplace.Imersao.Core.Infra.Data.Repositories
 {
@@ -180,6 +181,11 @@ namespace Dataplace.Imersao.Core.Infra.Data.Repositories
                 transaction: _dataAccess.Transaction);
 
             return items.FirstOrDefault();
+        }
+
+        public IEnumerable<OrcamentoItem> ObterItens(string cdEmpresa, string cdFilail, int numOrcamento)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -80,12 +80,20 @@
   <ItemGroup>
     <Compile Include="Application\Orcamentos\Commands\AdicionarOrcamentoCommand.cs" />
     <Compile Include="Application\Orcamentos\Commands\AdicionarOrcamentoItemCommand.cs" />
+    <Compile Include="Application\Orcamentos\Commands\AtualizarOrcamentoCommand.cs" />
+    <Compile Include="Application\Orcamentos\Commands\CancelarOrcamentoCommand.cs" />
+    <Compile Include="Application\Orcamentos\Commands\DeletarOrcamentoCommand.cs" />
     <Compile Include="Application\Orcamentos\Commands\FecharOrcamentoCommand.cs" />
     <Compile Include="Application\Orcamentos\Commands\OrcamentoCommandHandler.cs" />
+    <Compile Include="Application\Orcamentos\Commands\ReabrirOrcamentoCommand.cs" />
+    <Compile Include="Application\Orcamentos\Events\OrcamentoAtualizadoEvent.cs" />
+    <Compile Include="Application\Orcamentos\Events\OrcamentoCanceladoEvent.cs" />
+    <Compile Include="Application\Orcamentos\Events\OrcamentoDeletadoEvent.cs" />
     <Compile Include="Application\Orcamentos\Events\OrcamentoItemAdicionadoEvent.cs" />
     <Compile Include="Application\Orcamentos\Events\OrcamentoAdicionadoEvent.cs" />
     <Compile Include="Application\Orcamentos\Events\OrcamentoFechadoEvent.cs" />
     <Compile Include="Application\Orcamentos\Events\OrcamentoEventHandler.cs" />
+    <Compile Include="Application\Orcamentos\Events\OrcamentoReabertoEvent.cs" />
     <Compile Include="Application\Orcamentos\Queries\ObterOcamentoQuery.cs" />
     <Compile Include="Application\Orcamentos\Queries\OrcamentoQueryHandler.cs" />
     <Compile Include="Application\Orcamentos\ViewModels\OrcamentoItemViewModel.cs" />
