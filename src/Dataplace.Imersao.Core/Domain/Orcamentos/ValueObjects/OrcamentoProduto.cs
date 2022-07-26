@@ -23,5 +23,10 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos.ValueObjects
         {
             return ! string.IsNullOrEmpty((CdProduto ?? string.Empty).Trim());
         }
+
+        public override string ToString()
+        {
+            return $"{CdProduto}";
+        }
     }
 }

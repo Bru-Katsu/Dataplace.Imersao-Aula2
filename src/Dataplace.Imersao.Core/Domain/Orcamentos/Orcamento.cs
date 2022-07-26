@@ -5,6 +5,7 @@ using Dataplace.Imersao.Core.Domain.Orcamentos.Enums;
 using Dataplace.Imersao.Core.Domain.Orcamentos.ValueObjects;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Dataplace.Imersao.Core.Domain.Orcamentos
 {
@@ -60,18 +61,29 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
         #endregion
 
         #region alteração de status
-        public OrcamentoItem AdicionarItem(OrcamentoProduto produto, decimal quantidade, OrcamentoItemPreco preco)
+        internal void DefinirItens()
         {
 
+        }
+
+        public OrcamentoItem AdicionarItem(OrcamentoProduto produto, decimal quantidade, OrcamentoItemPreco preco)
+        {
             var item = new OrcamentoItem(this.CdEmpresa, this.CdFilial, this.NumOrcamento, produto, quantidade, preco);
             if (!produto.IsValid())
                 return default;
 
-    
-
             this.Itens.Add(item);
             return item;
 
+        }
+
+        public void RemoverItem(int seq)
+        {
+            var item = Itens.FirstOrDefault(x => x.Seq == seq);
+            if (item == null)
+                throw new DomainException("O Item não existe no orçamento!");
+
+            Itens.Remove(item);
         }
 
         public void FecharOrcamento()
@@ -85,8 +97,9 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
             Situacao = OrcamentoStatusEnum.Fechado;
             foreach (var item in Itens ?? new List<OrcamentoItem>())
             {
-                item.DefinirStiaucao(OrcamentoItemStatusEnum.Fechado);
+                item.FecharItem();
             }
+
             DtFechamento = DateTime.Now.Date;
         }
 
@@ -102,8 +115,9 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
             Situacao = OrcamentoStatusEnum.Aberto;
             foreach (var item in Itens ?? new List<OrcamentoItem>())
             {
-                item.DefinirStiaucao(OrcamentoItemStatusEnum.Aberto);
+                item.ReabrirItem();
             }
+
             DtFechamento = null; 
         }
 
@@ -118,8 +132,9 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
             Situacao = OrcamentoStatusEnum.Cancelado;
             foreach (var item in Itens ?? new List<OrcamentoItem>())
             {
-                item.DefinirStiaucao(OrcamentoItemStatusEnum.Cancelado);
+                item.CancelarItem();
             }
+
             DtFechamento = null;
         }
 

@@ -22,7 +22,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         {
 
             // arrange act
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
 
             // assert
             Assert.True(orcamento.CdEmpresa == _fixture.CdEmpresa);
@@ -33,8 +33,8 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
             Assert.True(orcamento.Situacao == Core.Domain.Orcamentos.Enums.OrcamentoStatusEnum.Aberto);
             Assert.Null(orcamento.Validade);
             Assert.NotNull(orcamento.TabelaPreco);
-            Assert.Equal(_fixture.TavelaPreco.CdTabela, orcamento.TabelaPreco.CdTabela);
-            Assert.Equal(_fixture.TavelaPreco.SqTabela, orcamento.TabelaPreco.SqTabela);
+            Assert.Equal(_fixture.TabelaPreco.CdTabela, orcamento.TabelaPreco.CdTabela);
+            Assert.Equal(_fixture.TabelaPreco.SqTabela, orcamento.TabelaPreco.SqTabela);
         }
 
 
@@ -43,7 +43,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void TentarFecharOrcamentoRetornarStatusFechado()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             // act
             orcamento.FecharOrcamento();
 
@@ -57,7 +57,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void TentarFecharOrcamentoJaFechadoRetornarException()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             orcamento.FecharOrcamento();
 
             // act & assert
@@ -69,7 +69,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void TentarFecharOrcamentoCanceladoRetornarException()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             orcamento.CancelarOrcamento();
 
             // act & assert
@@ -81,7 +81,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void TentarReabrirOrcamentoRetornarStatusAberto()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             orcamento.FecharOrcamento();
 
             // act
@@ -97,7 +97,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void TentarReabrirOrcamentoCanceladoRetornarException()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             orcamento.CancelarOrcamento();
 
             // act & assert
@@ -109,7 +109,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void TentarReabrirOrcamentoAbertoRetornarException()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             //orcamento.FecharOrcamento();
 
             // act & assert
@@ -122,7 +122,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void TentarCancelarOrcamentoRetornarStatusCancelado()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
 
             // act
             orcamento.CancelarOrcamento();
@@ -137,7 +137,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void TentarCancelarOrcamentoFechadoRetornarException()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             orcamento.FecharOrcamento();
 
             // act & assert
@@ -149,7 +149,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void TentarCancelarOrcamentoReabertoRetornarStatusCancelado()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             orcamento.FecharOrcamento();
             orcamento.ReabrirOrcamento();
 
@@ -170,7 +170,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         {
 
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             var validade = 10;
 
             // act
@@ -189,7 +189,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         {
 
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             var validade = -1;
 
             // act assert
@@ -205,7 +205,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void OrcamentoIsValidRetornarStatusValido()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             // act
             orcamento.FecharOrcamento();
 

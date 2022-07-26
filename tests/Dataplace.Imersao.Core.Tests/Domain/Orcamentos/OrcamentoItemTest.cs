@@ -24,7 +24,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void AdicionarItemAoOrcamentoDeveRetornarSucesso()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             var produto = new OrcamentoProduto(TpRegistroEnum.ProdutoFinal, "1");
             var quantidade = 4M;
             var precoTabela = 10M;
@@ -107,7 +107,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void AdicionarItemValoresNegativoDeveRetornarException()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             var produto = new OrcamentoProduto(TpRegistroEnum.ProdutoFinal, "1");
             var quantidade = 1;
 
@@ -127,7 +127,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void AdicionarItemQuantidadeNegativoDeveRetornarException()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             var produto = new OrcamentoProduto(TpRegistroEnum.ProdutoFinal, "1");
   
             // act assert
@@ -140,7 +140,7 @@ namespace Dataplace.Imersao.Core.Tests.Domain.Orcamentos
         public void AdicionarItemAoOrcamentoIsValidDeveRetornarSucesso()
         {
             // arrange
-            var orcamento = _fixture.NovoOrcamento();
+            var orcamento = _fixture.NovoOrcamentoValido();
             var produto = new OrcamentoProduto(TpRegistroEnum.ProdutoFinal, "1");
             var quantidade = 4M;
             var precoTabela = 10M;

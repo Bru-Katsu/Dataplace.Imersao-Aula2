@@ -3,7 +3,7 @@
 namespace Dataplace.Imersao.Core.Tests.Fixtures
 {
     [CollectionDefinition(nameof(OrcamentoCollection))]
-    public class OrcamentoCollection 
-        : ICollectionFixture<OrcamentoFixture>
+    public class OrcamentoCollection : ICollectionFixture<OrcamentoFixture>,
+                                       ICollectionFixture<OrcamentoItemFixture>
     { }
 }

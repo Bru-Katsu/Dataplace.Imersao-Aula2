@@ -36,12 +36,40 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
         public decimal Total { get; private set; }
         public OrcamentoItemStatusEnum Situacao { get; private set; }
 
+        #region setters
+        public void DefinirQuantidade(decimal novaQuantidade)
+        {
+            Quantidade = novaQuantidade;
+        }
+
+        public void AtrubuirPreco(OrcamentoItemPreco preco)
+        {
+            Preco = preco;
+            CalcularTotal();
+        }
+        #endregion
 
         #region alteração de status
-        public void DefinirStiaucao(OrcamentoItemStatusEnum situacao)
+        public void ReabrirItem()
         {
-            this.Situacao = situacao;
+            Situacao = OrcamentoItemStatusEnum.Aberto;
         }
+
+        public void FecharItem()
+        {
+            Situacao = OrcamentoItemStatusEnum.Aberto;
+        }
+
+        public void CancelarItem()
+        {
+            Situacao = OrcamentoItemStatusEnum.Aberto;
+        }
+
+        //descartei, na minha opnião isso tem que ser protegido de alteração externa direta
+        //public void DefinirSituacao(OrcamentoItemStatusEnum situacao)
+        //{
+        //    this.Situacao = situacao;
+        //}
 
         internal void DefinirProduto(OrcamentoProduto produto)
         {
@@ -89,13 +117,10 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
         //}
 
         #endregion
+
         #region cálculos
 
-        private void AtrubuirPreco(OrcamentoItemPreco preco)
-        {
-            Preco = preco;
-            CalcularTotal();
-        }
+
 
         private void CalcularTotal()
         {

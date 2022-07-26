@@ -4,6 +4,11 @@ namespace Dataplace.Imersao.Core.Application.Orcamentos.Commands
 {
     public class FecharOrcamentoCommand : Command
     {
-        public int NumOcamento { get; set; }
+        public FecharOrcamentoCommand(int numOcamento)
+        {
+            NumOcamento = numOcamento;
+        }
+
+        public int NumOcamento { get; }
     }
 }

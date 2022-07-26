@@ -3,14 +3,8 @@ using Dataplace.Imersao.Core.Application.Orcamentos.ViewModels;
 
 namespace Dataplace.Imersao.Core.Application.Orcamentos.Events
 {
-    public class OrcamentoItemAdicionadoEvent : Event
+    public class OrcamentoItemAdicionadoEvent : OrcamentoItemEventBase
     {
-   
-        public OrcamentoItemAdicionadoEvent(OrcamentoItemViewModel item)
-        {
-            Item = item;
-        }
-
-        public OrcamentoItemViewModel Item { get; }
+        public OrcamentoItemAdicionadoEvent(OrcamentoItemViewModel item) : base(item) { }
     }
 }
